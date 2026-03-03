@@ -1,0 +1,20 @@
+[
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "id": "ronelsolomon",
+    "full_name": "Ronel Solomon",
+    "first_name": "Ronel",
+    "last_name": "Solomon",
+    "created_at": "2026-03-02T00:46:33.650888",
+    "updated_at": "2026-03-02T19:30:11.970718"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/src/data",
+    "id": "test_user",
+    "full_name": "Test User",
+    "first_name": "Test",
+    "last_name": "User",
+    "created_at": "2026-03-01T23:48:58.629068",
+    "updated_at": "2026-03-02T19:26:41.447963"
+  }
+]

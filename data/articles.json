@@ -1,0 +1,377 @@
+[
+  {
+    "content": {
+      "Title": "Test Article",
+      "Subtitle": "A test article subtitle",
+      "Content": "This is the full content of the test article...",
+      "language": "en"
+    },
+    "link": "https://example.com/test-article",
+    "platform": "custom",
+    "author_id": "ronelsolomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "fca47605-2f32-4a8f-b06f-1a3ed1ad2d1e",
+    "created_at": "2026-03-01T23:01:27.657171",
+    "updated_at": "2026-03-01T23:01:27.657188"
+  },
+  {
+    "content": {
+      "Title": null,
+      "Subtitle": null,
+      "Content": "MediumSitemap\n\n\n\nWelcome back.Sign in with GoogleSign in with FacebookSign in with AppleSign in with XSign in with emailRemember me for faster sign inNo account? Create oneForgot email or trouble signing in? Get help.By clicking \"Sign in\", you accept Medium's Terms of Service and Privacy Policy."
+    },
+    "link": "https://medium.com/m/signin?operation=login&redirect=https%3A%2F%2Fmedium.com%2F%40ronelsolomon&source=user_profile_page---two_column_layout_nav-----------------------global_nav------------------",
+    "platform": "medium",
+    "author_id": "test_user_001",
+    "author_full_name": "Ronel Solomon",
+    "id": "d8d6ead7-82b5-45a8-a44f-c82f51a2f50a",
+    "created_at": "2026-03-01T23:21:29.846201",
+    "updated_at": "2026-03-01T23:21:29.846412"
+  },
+  {
+    "content": {
+      "Title": null,
+      "Subtitle": null,
+      "Content": "MediumSitemap\n\n\n\nCreate an account to save this story.Save stories to your personalized lists and access them anytime, anywhere.Sign up with GoogleSign up with FacebookSign up with emailRemember me for faster sign inAlready have an account? Sign inBy clicking \"Sign up\", you accept Medium's Terms of Service and Privacy Policy."
+    },
+    "link": "https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F7b691653fff3&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ronelsolomon%2Fpitch-deck-verification-system-7b691653fff3&source=---------0-------------71cb12c65ff5----bookmark_preview------------------",
+    "platform": "medium",
+    "author_id": "test_user_001",
+    "author_full_name": "Ronel Solomon",
+    "id": "b64190b3-4149-4031-912d-7eb4f7b0e027",
+    "created_at": "2026-03-01T23:21:32.345644",
+    "updated_at": "2026-03-01T23:21:32.345888"
+  },
+  {
+    "content": {
+      "Title": null,
+      "Subtitle": null,
+      "Content": "MediumSitemap\n\n\n\nCreate an account to save this story.Save stories to your personalized lists and access them anytime, anywhere.Sign up with GoogleSign up with FacebookSign up with emailRemember me for faster sign inAlready have an account? Sign inBy clicking \"Sign up\", you accept Medium's Terms of Service and Privacy Policy."
+    },
+    "link": "https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F7fd85dc9bc48&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ronelsolomon%2Fhow-i-solved-a-problem-in-microsoft-teams-7fd85dc9bc48&source=---------1-------------71cb12c65ff5----bookmark_preview------------------",
+    "platform": "medium",
+    "author_id": "test_user_001",
+    "author_full_name": "Ronel Solomon",
+    "id": "c7417366-f7e1-46a4-9ac0-f066bb783130",
+    "created_at": "2026-03-01T23:21:34.896831",
+    "updated_at": "2026-03-01T23:21:34.897042"
+  },
+  {
+    "content": {
+      "Title": null,
+      "Subtitle": null,
+      "Content": "MediumSitemap\n\n\n\nCreate an account to save this story.Save stories to your personalized lists and access them anytime, anywhere.Sign up with GoogleSign up with FacebookSign up with emailRemember me for faster sign inAlready have an account? Sign inBy clicking \"Sign up\", you accept Medium's Terms of Service and Privacy Policy."
+    },
+    "link": "https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F01db8784c892&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ronelsolomon%2Fhow-to-utilize-multimodal-data-in-an-etl-pipeline-01db8784c892&source=---------2-------------71cb12c65ff5----bookmark_preview------------------",
+    "platform": "medium",
+    "author_id": "test_user_001",
+    "author_full_name": "Ronel Solomon",
+    "id": "b7990153-5a0e-4013-9c95-3643ddd43ca7",
+    "created_at": "2026-03-01T23:21:37.431057",
+    "updated_at": "2026-03-01T23:21:37.431232"
+  },
+  {
+    "content": {
+      "Title": null,
+      "Subtitle": null,
+      "Content": "MediumSitemap\n\n\n\nCreate an account to save this story.Save stories to your personalized lists and access them anytime, anywhere.Sign up with GoogleSign up with FacebookSign up with emailRemember me for faster sign inAlready have an account? Sign inBy clicking \"Sign up\", you accept Medium's Terms of Service and Privacy Policy."
+    },
+    "link": "https://medium.com/m/signin?actionUrl=https%3A%2F%2Fmedium.com%2F_%2Fbookmark%2Fp%2F28e9136a9941&operation=register&redirect=https%3A%2F%2Fmedium.com%2F%40ronelsolomon%2F%25EF%25B8%258F-detecting-sports-fields-from-images-with-ai-28e9136a9941&source=---------3-------------71cb12c65ff5----bookmark_preview------------------",
+    "platform": "medium",
+    "author_id": "test_user_001",
+    "author_full_name": "Ronel Solomon",
+    "id": "8580e066-5671-4169-a151-a88c3500f54a",
+    "created_at": "2026-03-01T23:21:39.971486",
+    "updated_at": "2026-03-01T23:21:39.971639"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Education: University of San Francisco",
+      "Subtitle": "LinkedIn Education",
+      "Content": "{\n  \"institution\": \"University of San Francisco\"\n}",
+      "language": "en",
+      "Category": "education",
+      "Source": "LinkedIn PDF"
+    },
+    "link": "https://www.linkedin.com/in/ronel-solomon/#education",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "69ae07a7-393d-474e-87fc-9689bd5d9da7",
+    "created_at": "2026-03-02T16:22:49.106221",
+    "updated_at": "2026-03-02T16:22:49.106880"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "www.linkedin.com/in/ronel-solomon",
+      "Subtitle": "From Profile PDF",
+      "Content": "(LinkedIn)\nmedium.com/@ronelsolomon\n(Blog)\ngithub.com/ronelsolomon\n(Personal)",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-1-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "50df3a69-44a3-4c54-8874-277fb3b928c5",
+    "created_at": "2026-03-02T16:24:17.982943",
+    "updated_at": "2026-03-02T16:24:17.983078"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "ML Engineer / AI Video Solutions",
+      "Subtitle": "From Profile PDF",
+      "Content": "San Francisco Bay Area",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-2-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "8e6ef33a-2738-4a87-a38a-c786f2b05b6f",
+    "created_at": "2026-03-02T16:24:17.983927",
+    "updated_at": "2026-03-02T16:24:17.984005"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Architecting Big Data Applications:",
+      "Subtitle": "From Profile PDF",
+      "Content": "Real-Time Application Engineering",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-16-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "ff6c0d12-1d54-45d9-ba31-4338f1b87718",
+    "created_at": "2026-03-02T16:24:17.984514",
+    "updated_at": "2026-03-02T16:24:17.984608"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "US President’s Education Awards",
+      "Subtitle": "From Profile PDF",
+      "Content": "Program - Outstanding Academic\nAchievement Award",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-17-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "00e1712e-cf54-4c82-a985-56c6e80c8d7c",
+    "created_at": "2026-03-02T16:24:17.985261",
+    "updated_at": "2026-03-02T16:24:17.985335"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Azure), Databricks, MongoDB, Redshift, and distributed computing",
+      "Subtitle": "From Profile PDF",
+      "Content": "frameworks.",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-26-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "5625a0d9-161e-428d-9a3b-52523c70cd30",
+    "created_at": "2026-03-02T16:24:17.985827",
+    "updated_at": "2026-03-02T16:24:17.985976"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "SURMOUNT TECHNOLOGIES",
+      "Subtitle": "From Profile PDF",
+      "Content": "Machine Learning Engineer\nAugust 2025 - Present (8 months)",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-27-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "d2ceeb36-6e71-44c6-a7ba-55fd83fca14d",
+    "created_at": "2026-03-02T16:24:17.986539",
+    "updated_at": "2026-03-02T16:24:17.986627"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Behind the Hype: What Makes",
+      "Subtitle": "From Profile PDF",
+      "Content": "Startups Succeed or Fail, a Student\nSurvey of Patterns",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-28-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "109f491a-ff8a-4cdb-ac46-477543b662ca",
+    "created_at": "2026-03-02T16:24:17.987096",
+    "updated_at": "2026-03-02T16:24:17.987175"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "University of California, Berkeley",
+      "Subtitle": "From Profile PDF",
+      "Content": "AI/Data Engineer\nJune 2025 - August 2025 (3 months)\nBerkeley, California, United States",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-47-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "cd5cbad1-3f6d-403d-81e9-725b885c637b",
+    "created_at": "2026-03-02T16:24:17.987778",
+    "updated_at": "2026-03-02T16:24:17.987864"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "MyEdMaster",
+      "Subtitle": "From Profile PDF",
+      "Content": "Machine Learning Engineer\nNovember 2024 - August 2025 (10 months)",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-63-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "3130ea46-c6cf-4b6d-a5a8-3f76277eaf81",
+    "created_at": "2026-03-02T16:24:17.988328",
+    "updated_at": "2026-03-02T16:24:17.988408"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Helping Hand",
+      "Subtitle": "From Profile PDF",
+      "Content": "Full Stack Engineer\nApril 2025 - July 2025 (4 months)\nBerkeley, California, United States",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-74-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "e87c8f52-8979-44a3-9592-4f5e80593072",
+    "created_at": "2026-03-02T16:24:17.988855",
+    "updated_at": "2026-03-02T16:24:17.988936"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Metaphor Data",
+      "Subtitle": "From Profile PDF",
+      "Content": "Machine Learning Engineer\nOctober 2023 - June 2024 (9 months)\nSan Francisco Bay Area",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-84-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "65e50888-9914-48f5-86b9-9482a8f4459e",
+    "created_at": "2026-03-02T16:24:17.989386",
+    "updated_at": "2026-03-02T16:24:17.989468"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "University of California, Berkeley",
+      "Subtitle": "From Profile PDF",
+      "Content": "Data Science Researcher\nJanuary 2023 - May 2023 (5 months)\nBerkeley, California, United States",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-92-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "1e2c6d33-50d8-4468-bf48-32bbaf97d971",
+    "created_at": "2026-03-02T16:24:17.989916",
+    "updated_at": "2026-03-02T16:24:17.990000"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Visa",
+      "Subtitle": "From Profile PDF",
+      "Content": "Data Analytics and BI Anaylst\nMay 2022 - August 2022 (4 months)\nAustin, Texas, United States",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-97-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "dc610c3b-fb40-49fc-9c97-55023415ec24",
+    "created_at": "2026-03-02T16:24:17.990611",
+    "updated_at": "2026-03-02T16:24:17.990697"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Colt Technology Services",
+      "Subtitle": "From Profile PDF",
+      "Content": "Technical Data Scientist\nMay 2021 - September 2021 (5 months)\nLondon, England, United Kingdom",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-103-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "9a780e37-c2f9-4bf8-a9f4-fc330ef91a8c",
+    "created_at": "2026-03-02T16:24:17.991188",
+    "updated_at": "2026-03-02T16:24:17.991276"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "KPMG",
+      "Subtitle": "From Profile PDF",
+      "Content": "Data Analytics  Virtual Internship\nJune 2020 - August 2020 (3 months)",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-111-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "2b729ab1-d0a7-4ca8-8fb1-8248571ab4ae",
+    "created_at": "2026-03-02T16:24:17.991984",
+    "updated_at": "2026-03-02T16:24:17.992112"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "Cisco",
+      "Subtitle": "From Profile PDF",
+      "Content": "Job Shadow\nJune 2018 - July 2018 (2 months)\nSan Jose, CA",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-112-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "20b3ef75-2663-4f17-85ba-c1c702cde49b",
+    "created_at": "2026-03-02T16:24:17.992677",
+    "updated_at": "2026-03-02T16:24:17.992772"
+  },
+  {
+    "_db_path": "/Users/ronel/Downloads/llm twin/data",
+    "content": {
+      "Title": "University of California, Berkeley",
+      "Subtitle": "From Profile PDF",
+      "Content": "Science Intern\nJune 2016 - August 2017 (1 year 3 months)\nBerkeley,CA",
+      "language": "en"
+    },
+    "link": "https://www.linkedin.com/posts/ronel-solomon-profile-update-115-20260302/",
+    "platform": "www.linkedin.com",
+    "author_id": "ronel_solomon",
+    "author_full_name": "Ronel Solomon",
+    "id": "04b19b7e-4a4b-4c62-822a-a974918901be",
+    "created_at": "2026-03-02T16:24:17.993330",
+    "updated_at": "2026-03-02T16:24:17.993428"
+  }
+]

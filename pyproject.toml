@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "llm-twin"
+version = "0.1.0"
+description = "A comprehensive web scraping and data collection system for various platforms including Medium, GitHub, and LinkedIn"
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+requests = "^2.28.0"
+beautifulsoup4 = "^4.11.0"
+selenium = "^4.8.0"
+loguru = "^0.6.0"
+zenml = "^0.40.0"
+pyyaml = "^6.0"
+pymongo = "^4.3.0"
+webdriver-manager = "^3.8.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0.0"
+
+[tool.poe.tasks]
+# Digital Data ETL tasks for different authors
+run-digital-data-etl-ronel = "python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_ronel_solomon.yaml"
+run-digital-data-etl-maxime = "python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_maxime_labonne.yaml"
+run-digital-data-etl-paul = "python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_paul_iusztin.yaml"
+run-digital-data-etl = "python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_ronel_solomon.yaml && python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_maxime_labonne.yaml && python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_paul_iusztin.yaml"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

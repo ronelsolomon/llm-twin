@@ -1,0 +1,53 @@
+parameters:
+  user_full_name: Ronel Solomon # [First Name(s)] [Last Name]
+  links:
+    # LinkedIn profile and posts from existing data
+    - https://www.linkedin.com/in/ronel-solomon/#education
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-1-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-2-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-16-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-17-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-26-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-27-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-28-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-47-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-63-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-74-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-84-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-92-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-97-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-103-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-111-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-112-20260302/
+    - https://www.linkedin.com/posts/ronel-solomon-profile-update-115-20260302/
+    # GitHub repositories from existing data
+    - https://github.com/ronelsolomon/2D-Farming-Game.git
+    - https://github.com/ronelsolomon/2d-game.git
+    - https://github.com/ronelsolomon/2d-game-dev.git
+    - https://github.com/ronelsolomon/AI-Engineer-questions.git
+    - https://github.com/ronelsolomon/ai-videos.git
+    - https://github.com/ronelsolomon/aiadds.git
+    - https://github.com/ronelsolomon/air-quality-MLOPs.git
+    - https://github.com/ronelsolomon/aivideo.git
+    - https://github.com/ronelsolomon/aleoex.git
+    - https://github.com/ronelsolomon/assementTemplate.git
+    - https://github.com/ronelsolomon/AWS-backend.git
+    - https://github.com/ronelsolomon/cebras.git
+    - https://github.com/ronelsolomon/changeAudio.git
+    - https://github.com/ronelsolomon/crawlerx.git
+    - https://github.com/ronelsolomon/csvDashboardRetetion.git
+    - https://github.com/ronelsolomon/curify-gallery.git
+    - https://github.com/ronelsolomon/dev.git
+    - https://github.com/ronelsolomon/dma.git
+    - https://github.com/ronelsolomon/ETL-pipeline.git
+    - https://github.com/ronelsolomon/expresive.git
+    - https://github.com/ronelsolomon/file-audio.git
+    - https://github.com/ronelsolomon/filesummarize.git
+    - https://github.com/ronelsolomon/FindYoutube.git
+    - https://github.com/ronelsolomon/genAI.git
+    - https://github.com/ronelsolomon/Graph-k-means.git
+    - https://github.com/ronelsolomon/healthcare.git
+    - https://github.com/ronelsolomon/hearpython.git
+    - https://github.com/ronelsolomon/interview_questions.git
+    - https://github.com/ronelsolomon/java-project.git
+    - https://github.com/ronelsolomon/keboola-mcp.git

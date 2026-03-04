@@ -136,6 +136,20 @@ class NoSQLBaseDocument:
         """Get all documents in collection"""
         collection = cls._load_collection()
         return [cls(**doc_dict) for doc_dict in collection]
+    
+    def get_collection_name(self) -> str:
+        """Get the collection name for this document type"""
+        class_name = self.__class__.__name__.lower()
+        # Handle special pluralization cases
+        if 'repositorydocument' in class_name:
+            return 'repositories'
+        elif 'articledocument' in class_name:
+            return 'articles'
+        elif 'userdocument' in class_name:
+            return 'users'
+        else:
+            # Fallback to original logic for other document types
+            return class_name.replace('document', 's')
 
 
 class UserDocument(NoSQLBaseDocument):

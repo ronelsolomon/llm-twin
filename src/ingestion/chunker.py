@@ -8,8 +8,8 @@ from dataclasses import dataclass
 from loguru import logger
 
 try:
-    from langchain.text_splitter import RecursiveCharacterTextSplitter
-    from langchain.schema import Document as LangchainDocument
+    from langchain_text_splitters import RecursiveCharacterTextSplitter
+    from langchain_core.documents import Document as LangchainDocument
     LANGCHAIN_AVAILABLE = True
 except ImportError:
     LANGCHAIN_AVAILABLE = False
@@ -75,6 +75,52 @@ class TextChunker:
                 pass
         return len(text)
     
+    def _extract_text(self, document: Dict[str, Any]) -> str:
+        """
+        Extract text from a document dict.
+
+        Documents produced by process_raw_documents.py have the structure:
+            {'text': '...', 'metadata': {...}}
+        but legacy documents may also carry a top-level 'content' key or
+        nest content under metadata.  We check all known locations in order
+        of preference so the chunker never silently returns an empty string.
+        """
+        # Primary location used by our pipeline
+        if isinstance(document.get('text'), str) and document['text'].strip():
+            return document['text']
+
+        # Legacy / alternative key names
+        for key in ('content', 'page_content', 'body', 'raw_text'):
+            if isinstance(document.get(key), str) and document[key].strip():
+                return document[key]
+
+        # Content nested inside metadata
+        metadata = document.get('metadata', {})
+        for key in ('text', 'content', 'Content', 'body'):
+            if isinstance(metadata.get(key), str) and metadata[key].strip():
+                return metadata[key]
+
+        return ''
+
+    def _extract_document_type(self, document: Dict[str, Any]) -> str:
+        """
+        Extract the document type from a document dict.
+
+        Our pipeline stores document_type inside the 'metadata' sub-dict,
+        but older code stored it as a top-level 'platform' key.
+        """
+        # Primary location
+        metadata = document.get('metadata', {})
+        if metadata.get('document_type'):
+            return metadata['document_type']
+
+        # Fallback top-level keys (legacy)
+        for key in ('document_type', 'platform', 'type', 'source_type'):
+            if document.get(key):
+                return document[key]
+
+        return 'unknown'
+
     def chunk_document(self, document: Dict[str, Any], text: str) -> List[Chunk]:
         """
         Chunk a single document's text.
@@ -91,7 +137,9 @@ class TextChunker:
             return []
         
         document_id = document.get('id', 'unknown')
-        document_type = document.get('platform', 'unknown')
+
+        # FIX: read document_type from metadata, not from the top-level 'platform' key
+        document_type = self._extract_document_type(document)
         
         if LANGCHAIN_AVAILABLE and self.splitter:
             return self._chunk_with_langchain(document, text, document_id, document_type)
@@ -190,14 +238,18 @@ class TextChunker:
         logger.info(f"Created {len(chunks)} chunks for document {document_id} using fallback method")
         return chunks
     
-    def chunk_documents(self, documents: List[Dict[str, Any]], 
-                       cleaner) -> List[Chunk]:
+    def chunk_documents(self, documents: List[Dict[str, Any]],
+                        cleaner=None) -> List[Chunk]:
         """
         Chunk multiple documents.
         
         Args:
-            documents: List of documents to chunk
-            cleaner: DataCleaner instance for text extraction
+            documents: List of documents to chunk.  Each document is expected
+                to have the structure {'text': '...', 'metadata': {...}}.
+            cleaner: Optional DataCleaner instance.  If provided its
+                extract_main_text() is tried first; the built-in extraction
+                logic is used as a reliable fallback so that documents are
+                never silently dropped when the cleaner returns empty string.
             
         Returns:
             List of all chunks from all documents
@@ -206,9 +258,19 @@ class TextChunker:
         
         for doc in documents:
             try:
-                # Extract main text from document
-                text = cleaner.extract_main_text(doc)
-                
+                # FIX: use our own robust extraction instead of relying solely
+                # on the cleaner, which returns '' for our {'text':...} format.
+                text = ''
+                if cleaner is not None:
+                    try:
+                        text = cleaner.extract_main_text(doc) or ''
+                    except Exception:
+                        pass
+
+                # Fall back to direct extraction if cleaner gave nothing
+                if not text or not text.strip():
+                    text = self._extract_text(doc)
+
                 # Chunk the document
                 chunks = self.chunk_document(doc, text)
                 all_chunks.extend(chunks)

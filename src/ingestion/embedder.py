@@ -31,7 +31,7 @@ class EmbeddingGenerator:
                  model_name: str = "sentence-transformers/all-MiniLM-L6-v2",
                  model_type: str = "sentence_transformers",
                  openai_api_key: Optional[str] = None,
-                 batch_size: int = 32):
+                 batch_size: int = 128):
         """
         Initialize the embedding generator.
         
@@ -67,9 +67,11 @@ class EmbeddingGenerator:
                 
                 if not openai_api_key:
                     raise ValueError("OpenAI API key is required for OpenAI models")
-                
-                openai.api_key = openai_api_key
-                self.model = openai
+
+                # FIX #1: openai >= 1.0 uses a client instance, not a module-level
+                # api_key + openai.Embedding.create().  The old pattern was removed
+                # in the v1 SDK and raises AttributeError at runtime.
+                self.model = openai.OpenAI(api_key=openai_api_key)
                 self.embedding_dim = self._get_openai_embedding_dimension()
                 logger.info(f"OpenAI model initialized. Embedding dimension: {self.embedding_dim}")
                 
@@ -82,7 +84,6 @@ class EmbeddingGenerator:
     
     def _get_openai_embedding_dimension(self) -> int:
         """Get the embedding dimension for OpenAI models."""
-        # Common OpenAI embedding dimensions
         if "text-embedding-ada-002" in self.model_name:
             return 1536
         elif "text-embedding-3-small" in self.model_name:
@@ -90,7 +91,6 @@ class EmbeddingGenerator:
         elif "text-embedding-3-large" in self.model_name:
             return 3072
         else:
-            # Default to 1536 for unknown models
             return 1536
     
     def generate_embeddings(self, texts: List[str]) -> List[List[float]]:
@@ -105,12 +105,16 @@ class EmbeddingGenerator:
         """
         if not texts:
             return []
+
+        # FIX #2: silently drop None / non-string entries that would crash both
+        # the sentence-transformer encoder and the OpenAI API call.
+        cleaned_texts = [t if isinstance(t, str) and t.strip() else " " for t in texts]
         
         try:
             if self.model_type == "sentence_transformers":
-                return self._generate_sentence_transformer_embeddings(texts)
+                return self._generate_sentence_transformer_embeddings(cleaned_texts)
             elif self.model_type == "openai":
-                return self._generate_openai_embeddings(texts)
+                return self._generate_openai_embeddings(cleaned_texts)
             else:
                 raise ValueError(f"Unsupported model type: {self.model_type}")
                 
@@ -121,10 +125,15 @@ class EmbeddingGenerator:
     def _generate_sentence_transformer_embeddings(self, texts: List[str]) -> List[List[float]]:
         """Generate embeddings using sentence-transformers."""
         embeddings = []
+        total_batches = (len(texts) + self.batch_size - 1) // self.batch_size
         
-        # Process in batches to avoid memory issues
         for i in range(0, len(texts), self.batch_size):
+            batch_num = i // self.batch_size + 1
             batch_texts = texts[i:i + self.batch_size]
+            
+            # Log progress every 10 batches or for first/last batch
+            if batch_num == 1 or batch_num == total_batches or batch_num % 10 == 0:
+                logger.info(f"Processing batch {batch_num}/{total_batches} ({len(batch_texts)} texts)")
             
             try:
                 batch_embeddings = self.model.encode(
@@ -135,8 +144,7 @@ class EmbeddingGenerator:
                 embeddings.extend(batch_embeddings.tolist())
                 
             except Exception as e:
-                logger.error(f"Failed to embed batch {i//self.batch_size}: {e}")
-                # Add zero embeddings for failed batch
+                logger.error(f"Failed to embed batch {batch_num}: {e}")
                 zero_emb = [0.0] * self.embedding_dim
                 embeddings.extend([zero_emb] * len(batch_texts))
         
@@ -146,22 +154,23 @@ class EmbeddingGenerator:
         """Generate embeddings using OpenAI."""
         embeddings = []
         
-        # Process in batches to respect API limits
         for i in range(0, len(texts), self.batch_size):
             batch_texts = texts[i:i + self.batch_size]
             
             try:
-                response = self.model.Embedding.create(
+                # FIX #1 (continued): use the v1 SDK client API.
+                # Old (broken): self.model.Embedding.create(input=..., model=...)
+                # New (correct): self.model.embeddings.create(input=..., model=...)
+                # Response is now an object, not a dict, so use attribute access.
+                response = self.model.embeddings.create(
                     input=batch_texts,
                     model=self.model_name
                 )
-                
-                batch_embeddings = [data['embedding'] for data in response['data']]
+                batch_embeddings = [item.embedding for item in response.data]
                 embeddings.extend(batch_embeddings)
                 
             except Exception as e:
                 logger.error(f"Failed to embed batch {i//self.batch_size} with OpenAI: {e}")
-                # Add zero embeddings for failed batch
                 zero_emb = [0.0] * self.embedding_dim
                 embeddings.extend([zero_emb] * len(batch_texts))
         
@@ -181,14 +190,20 @@ class EmbeddingGenerator:
             return []
         
         logger.info(f"Generating embeddings for {len(chunks)} chunks using {self.model_name}")
+        logger.info(f"Batch size: {self.batch_size}, Estimated batches: {(len(chunks) + self.batch_size - 1) // self.batch_size}")
         
-        # Extract texts from chunks
         texts = [chunk.text for chunk in chunks]
-        
-        # Generate embeddings
         embeddings = self.generate_embeddings(texts)
+
+        # FIX #3: zip() silently truncates to the shorter list, so a length
+        # mismatch between chunks and embeddings would drop data with no
+        # warning.  Validate lengths before zipping.
+        if len(embeddings) != len(chunks):
+            logger.error(
+                f"Embedding count mismatch: {len(embeddings)} embeddings for "
+                f"{len(chunks)} chunks. Results may be incomplete."
+            )
         
-        # Combine chunks with embeddings
         embedded_chunks = []
         for chunk, embedding in zip(chunks, embeddings):
             chunk_data = {

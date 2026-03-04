@@ -25,6 +25,9 @@ run-digital-data-etl-maxime = "python -m tools.run --run-etl --no-cache --etl-co
 run-digital-data-etl-paul = "python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_paul_iusztin.yaml"
 run-digital-data-etl = "python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_ronel_solomon.yaml && python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_maxime_labonne.yaml && python -m tools.run --run-etl --no-cache --etl-config-filename digital_data_etl_paul_iusztin.yaml"
 
+# Feature Engineering Pipeline tasks
+run-feature-engineering-pipeline = "python -m tools.run --run-feature-engineering --no-cache"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

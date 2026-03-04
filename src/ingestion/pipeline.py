@@ -14,6 +14,7 @@ from .cleaner import DataCleaner
 from .chunker import TextChunker, Chunk
 from .embedder import EmbeddingGenerator
 from .vector_store import QdrantVectorStore, VectorStoreConfig
+from .hybrid_vector_store import HybridVectorStore, HybridStoreConfig
 
 
 @dataclass
@@ -31,7 +32,7 @@ class PipelineConfig:
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     embedding_model_type: str = "sentence_transformers"
     openai_api_key: Optional[str] = None
-    embedding_batch_size: int = 32
+    embedding_batch_size: int = 128
     
     # Vector store
     qdrant_host: str = "localhost"
@@ -39,6 +40,13 @@ class PipelineConfig:
     qdrant_api_key: Optional[str] = None
     qdrant_collection_name: str = "document_chunks"
     qdrant_distance_metric: str = "cosine"
+    
+    # Hybrid store settings
+    use_hybrid_store: bool = True
+    faiss_index_path: str = "data/faiss_index"
+    faiss_metadata_path: str = "data/faiss_metadata.json"
+    qdrant_payload_limit_mb: int = 30
+    max_batch_size: int = 25
     
     # Pipeline settings
     skip_existing: bool = True
@@ -89,16 +97,32 @@ class IngestionPipeline:
         logger.info(f"Embedding generator initialized with {self.config.embedding_model}")
         
         # Initialize vector store
-        vector_config = VectorStoreConfig(
-            host=self.config.qdrant_host,
-            port=self.config.qdrant_port,
-            api_key=self.config.qdrant_api_key,
-            collection_name=self.config.qdrant_collection_name,
-            embedding_dimension=self.embedder.embedding_dim,
-            distance_metric=self.config.qdrant_distance_metric
-        )
-        self.vector_store = QdrantVectorStore(vector_config)
-        logger.info("Qdrant vector store initialized")
+        if self.config.use_hybrid_store:
+            hybrid_config = HybridStoreConfig(
+                qdrant_host=self.config.qdrant_host,
+                qdrant_port=self.config.qdrant_port,
+                qdrant_api_key=self.config.qdrant_api_key,
+                qdrant_collection_name=self.config.qdrant_collection_name,
+                faiss_index_path=self.config.faiss_index_path,
+                faiss_metadata_path=self.config.faiss_metadata_path,
+                embedding_dimension=self.embedder.embedding_dim,
+                distance_metric=self.config.qdrant_distance_metric,
+                qdrant_payload_limit_mb=self.config.qdrant_payload_limit_mb,
+                max_batch_size=self.config.max_batch_size,
+            )
+            self.vector_store = HybridVectorStore(hybrid_config)
+            logger.info("Hybrid vector store initialized (Qdrant + FAISS)")
+        else:
+            vector_config = VectorStoreConfig(
+                host=self.config.qdrant_host,
+                port=self.config.qdrant_port,
+                api_key=self.config.qdrant_api_key,
+                collection_name=self.config.qdrant_collection_name,
+                embedding_dimension=self.embedder.embedding_dim,
+                distance_metric=self.config.qdrant_distance_metric
+            )
+            self.vector_store = QdrantVectorStore(vector_config)
+            logger.info("Qdrant vector store initialized")
     
     def process_documents(self, documents: List[Dict[str, Any]], 
                          document_type: str) -> Dict[str, Any]:

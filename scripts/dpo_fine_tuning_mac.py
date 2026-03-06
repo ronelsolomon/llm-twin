@@ -241,7 +241,7 @@ Write a response that appropriately completes the request.
         dpo_trainer = DPOTrainer(
             model=self.model,
             ref_model=None,  # Use same model as reference for PEFT
-            tokenizer=self.tokenizer,
+            processing_class=self.tokenizer,
             beta=self.beta,
             train_dataset=dataset["train"],
             eval_dataset=dataset["test"],

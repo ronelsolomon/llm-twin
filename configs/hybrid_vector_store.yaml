@@ -1,0 +1,47 @@
+# Hybrid Vector Store Configuration
+# This file allows easy switching between different vector store configurations
+
+# Enable/disable hybrid store mode
+hybrid:
+  enabled: true
+  # When false, only uses Qdrant
+  # When true, uses Qdrant + FAISS fallback
+
+# Qdrant Configuration
+qdrant:
+  host: "localhost"
+  port: 6333
+  api_key: null  # Set if using cloud Qdrant
+  collection_name: "document_chunks"
+  distance_metric: "cosine"  # Options: cosine, euclidean, dot
+  
+# FAISS Configuration (fallback store)
+faiss:
+  index_path: "data/faiss_index"
+  metadata_path: "data/faiss_metadata.json"
+  
+# Hybrid Store Behavior
+thresholds:
+  # Switch to FAISS when payload exceeds this size (MB)
+  qdrant_payload_limit_mb: 30
+  
+  # Maximum batch size for Qdrant uploads
+  max_batch_size: 25
+
+# Embedding Configuration
+embeddings:
+  model: "sentence-transformers/all-MiniLM-L6-v2"
+  model_type: "sentence_transformers"
+  dimension: 384
+  batch_size: 128
+
+# Pipeline Configuration
+pipeline:
+  chunk_size: 1000
+  chunk_overlap: 200
+  clean_data: true
+  skip_existing: true
+
+# Logging
+logging:
+  level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR

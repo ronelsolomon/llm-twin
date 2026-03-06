@@ -1,0 +1,27 @@
+# DPO Requirements for Mac (without GPU acceleration)
+# Core dependencies for DPO fine-tuning
+
+# Transformers and TRL for DPO
+transformers>=4.36.0
+trl>=0.7.0
+
+# Core ML libraries
+torch>=2.1.0
+datasets>=2.14.0
+accelerate>=0.24.0
+peft>=0.7.0
+
+# Additional utilities
+bitsandbytes>=0.41.0
+
+# Logging and utilities
+loguru>=0.7.0
+tqdm>=4.66.0
+pyyaml>=6.0
+
+# Optional: For monitoring
+wandb>=0.16.0
+tensorboard>=2.15.0
+
+# JSON handling (already in stdlib, but just in case)
+ujson>=5.8.0

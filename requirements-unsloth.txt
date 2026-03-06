@@ -1,0 +1,39 @@
+# Unsloth Fine-Tuning Requirements
+# Install with: pip install -r requirements-unsloth.txt
+
+# Core Unsloth package
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+
+# TRL for SFTTrainer
+trl>=0.7.0
+
+# Hugging Face ecosystem
+transformers>=4.36.0
+datasets>=2.14.0
+accelerate>=0.24.0
+peft>=0.7.0
+bitsandbytes>=0.41.0
+
+# PyTorch (choose based on your system)
+# For CUDA:
+# torch>=2.1.0
+# torchvision>=0.16.0
+# torchaudio>=2.1.0 --index-url https://download.pytorch.org/whl/cu118
+
+# For CPU/MPS (Apple Silicon):
+# torch>=2.1.0
+# torchvision>=0.16.0
+# torchaudio>=2.1.0
+
+# Additional utilities
+loguru>=0.7.0
+tqdm>=4.66.0
+requests>=2.31.0
+pydantic>=2.0.0
+
+# Optional: For better performance
+# xformers>=0.0.22
+# flash-attn>=2.3.0
+
+# Optional: For Comet ML logging
+# comet-ml>=3.3.0

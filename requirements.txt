@@ -22,6 +22,12 @@ sentence-transformers==2.2.2
 openai==1.3.5
 faiss-cpu==1.7.4
 
+# Datasets for training
+datasets==2.15.0
+
+# Ollama integration (requests is already included)
+# requests==2.31.0 (already included above)
+
 # Text processing for chunking
 tiktoken==0.5.2
 langchain==0.0.350

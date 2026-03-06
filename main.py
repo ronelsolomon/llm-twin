@@ -184,8 +184,22 @@ class CompleteETLPipeline:
                 'vector_processing_success': vector_result.get('success', False),
                 'total_documents_processed': ingestion_result.get('total_documents', 0),
                 'total_chunks_created': vector_result.get('total_chunks_created', 0),
-                'vector_store_points': vector_result.get('vector_store_points', 'N/A')
             }
+            
+            # Get vector store statistics from hybrid store
+            if hasattr(self, 'vector_store') and hasattr(self.vector_store, 'get_collection_info'):
+                try:
+                    collection_info = self.vector_store.get_collection_info()
+                    results['final_results']['vector_store_points'] = collection_info.get('total_points', 'N/A')
+                    results['final_results']['vector_store_vectors'] = collection_info.get('total_vectors', 'N/A')
+                    results['final_results']['vector_store_details'] = collection_info.get('stores', {})
+                except Exception as e:
+                    logger.warning(f"Failed to get vector store stats: {e}")
+                    results['final_results']['vector_store_points'] = 'N/A'
+                    results['final_results']['vector_store_vectors'] = 'N/A'
+            else:
+                results['final_results']['vector_store_points'] = 'N/A'
+                results['final_results']['vector_store_vectors'] = 'N/A'
             
             logger.info("🎉 Complete ETL pipeline finished successfully!")
             return results

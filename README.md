@@ -42,6 +42,11 @@ llm-twin/
 - **ArticleDocument**: Article content and metadata
 - **RepositoryDocument**: Repository information and analysis
 
+### DPO Fine-Tuning
+- **Preference Dataset Creation**: Generate preference pairs from instruction data
+- **DPO Training**: Fine-tune LLM twin using Direct Preference Optimization
+- **Model Testing**: Evaluate DPO fine-tuned model performance
+
 ## Installation
 
 1. Clone the repository:
@@ -55,9 +60,36 @@ cd llm-twin
 pip install -r requirements.txt
 ```
 
+For DPO fine-tuning, also install:
+```bash
+pip install -r requirements-dpo.txt
+```
+
 ## Usage
 
-### Basic Usage
+### DPO Fine-Tuning
+
+1. **Create Preference Dataset**:
+```bash
+python scripts/create_preference_dataset.py data/instruction_pairs.json
+```
+
+2. **Run DPO Training**:
+```bash
+python scripts/dpo_fine_tuning.py
+```
+
+3. **Quick Start Pipeline** (automates steps 1-2):
+```bash
+python scripts/run_dpo_pipeline.py
+```
+
+4. **Test DPO Model**:
+```bash
+python scripts/test_dpo_model.py
+```
+
+### Basic Usage (Crawlers)
 
 ```python
 from src.domain.documents import UserDocument

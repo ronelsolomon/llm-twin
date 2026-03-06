@@ -96,7 +96,17 @@ class InferencePipeline:
         
         try:
             # Generate embedding for query
-            query_embedding = self.pipeline.embedder.embed_texts([query])[0]
+            from src.ingestion.chunker import Chunk
+            query_chunk = Chunk(
+                text=query,
+                chunk_id="query",
+                document_id="query", 
+                document_type="query",
+                chunk_index=0,
+                metadata={}
+            )
+            embedded_query = self.pipeline.embedder.embed_chunks([query_chunk])[0]
+            query_embedding = embedded_query['embedding']
             
             # Use hybrid vector store search
             results = self.pipeline.vector_store.search_similar(

@@ -1,0 +1,71 @@
+# DPO Training Configuration
+
+# Model Settings
+model:
+  # Options:
+  # - "llama3:latest" - Base Llama 3 model (recommended for your Ollama setup)
+  # - "mlabonne/TwinLlama-3.1-8B" - Hugging Face twin model
+  # - "meta-llama/Llama-2-7b-chat-hf" - Llama 2 chat model
+  base_model: "microsoft/DialoGPT-medium"
+  
+  # PEFT Settings
+  peft:
+    r: 64                    # LoRA rank (increased for DPO)
+    lora_alpha: 64
+    lora_dropout: 0
+    target_modules: ["c_attn", "c_proj", "c_fc"]
+    load_in_4bit: true       # Set to true for memory efficiency
+
+# DPO Settings
+dpo:
+  beta: 0.5                 # Higher beta for more conservative updates
+  max_length: 1024          # Use half of max_seq_length
+  max_prompt_length: 1024   # Use half of max_seq_length
+  max_target_length: 1024   # Use half of max_seq_length
+
+# Training Settings  
+training:
+  max_seq_length: 2048
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 8
+  learning_rate: 2e-6       # Lower learning rate for DPO
+  num_train_epochs: 1
+  warmup_steps: 10
+  weight_decay: 0.01
+  optim: "adamw_8bit"
+  lr_scheduler_type: "linear"
+  
+  # Evaluation settings
+  eval_strategy: "steps"
+  eval_steps: 0.2
+  logging_steps: 1
+  
+  # Hardware settings (will be set dynamically)
+  fp16: true                 # Will be set based on hardware
+  bf16: false                # Will be set based on hardware
+  
+  # Output settings
+  output_dir: "output"
+  report_to: "none"          # Change to "comet_ml" if you have Comet ML
+  seed: 0
+
+# Data Settings
+data:
+  preference_dataset_path: "data/preference_dataset.json"
+  train_test_split: 0.05    # 5% for testing
+  
+# Output Settings
+output:
+  model_dir: "./dpo_llm_twin"
+  checkpoints_dir: "./dpo_results"
+  merged_model_dir: "./dpo_llm_twin_merged"  # For merged 16-bit model
+  
+# Testing Settings
+testing:
+  sample_prompts:
+    - "What are your main areas of expertise and experience?"
+    - "Can you describe your approach to software development?"
+    - "What technologies do you work with most frequently?"
+    - "How do you approach problem-solving in your projects?"
+    - "What makes you unique as a developer?"

@@ -1,0 +1,18 @@
+{
+  "key_findings": [
+    "Enhanced retrieval shows significant improvements in 1 metrics"
+  ],
+  "significant_improvements": [
+    {
+      "metric": "retrieval_time",
+      "improvement_percent": 1277.6726892977815,
+      "baseline": 0.1490107536315918,
+      "enhanced": 0.31645755767822265
+    }
+  ],
+  "performance_impact": {
+    "baseline_time_ms": 149.0107536315918,
+    "enhanced_time_ms": 316.45755767822266,
+    "overhead_percent": 112.37229526442071
+  }
+}

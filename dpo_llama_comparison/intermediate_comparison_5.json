@@ -1,0 +1,227 @@
+[
+  {
+    "task": {
+      "task_type": "blog_post",
+      "instruction": "Write a blog post about the benefits of renewable energy for a general audience. Keep it engaging and informative, around 300 words.",
+      "expected_length": [
+        250,
+        350
+      ],
+      "criteria": [
+        "engagement",
+        "informativeness",
+        "clarity"
+      ]
+    },
+    "model_results": {
+      "DPO-Llama": {
+        "response": "I'm not sure, the title?",
+        "quality_scores": {
+          "length_score": 1.0,
+          "engagement": 0.0,
+          "informativeness": 0.0,
+          "clarity": 0.0,
+          "overall": 0.25
+        },
+        "overall_score": 0.25
+      },
+      "DPO-Llama-Improved": {
+        "response": "",
+        "quality_scores": {
+          "length_score": 1.0,
+          "engagement": 0.0,
+          "informativeness": 0.0,
+          "clarity": 0.0,
+          "overall": 0.25
+        },
+        "overall_score": 0.25
+      }
+    },
+    "winner": "DPO-Llama",
+    "ranking": [
+      "DPO-Llama",
+      "DPO-Llama-Improved"
+    ],
+    "task_id": 0
+  },
+  {
+    "task": {
+      "task_type": "technical_explanation",
+      "instruction": "Explain how machine learning works to someone with a technical background. Include key concepts and practical examples.",
+      "expected_length": [
+        200,
+        400
+      ],
+      "criteria": [
+        "accuracy",
+        "technical_depth",
+        "clarity"
+      ]
+    },
+    "model_results": {
+      "DPO-Llama": {
+        "response": "In short, no idea why you would think that is the problem.",
+        "quality_scores": {
+          "length_score": 1.0,
+          "accuracy": 0.0,
+          "technical_depth": 0.0,
+          "clarity": 0.0,
+          "overall": 0.25
+        },
+        "overall_score": 0.25
+      },
+      "DPO-Llama-Improved": {
+        "response": "This is the only way you're going to get an answer.",
+        "quality_scores": {
+          "length_score": 1.0,
+          "accuracy": 0.0,
+          "technical_depth": 0.0,
+          "clarity": 0.0,
+          "overall": 0.25
+        },
+        "overall_score": 0.25
+      }
+    },
+    "winner": "DPO-Llama",
+    "ranking": [
+      "DPO-Llama",
+      "DPO-Llama-Improved"
+    ],
+    "task_id": 1
+  },
+  {
+    "task": {
+      "task_type": "creative_writing",
+      "instruction": "Write a short story about an AI that becomes self-aware. Focus on character development and emotional depth.",
+      "expected_length": [
+        400,
+        600
+      ],
+      "criteria": [
+        "creativity",
+        "narrative_coherence",
+        "emotional_impact"
+      ]
+    },
+    "model_results": {
+      "DPO-Llama": {
+        "response": "I'm sure it'll be interesting.",
+        "quality_scores": {
+          "length_score": 1.0,
+          "creativity": 0.0,
+          "narrative_coherence": 0.3,
+          "emotional_impact": 0.0,
+          "overall": 0.325
+        },
+        "overall_score": 0.325
+      },
+      "DPO-Llama-Improved": {
+        "response": "A movie would be a good start.",
+        "quality_scores": {
+          "length_score": 1.0,
+          "creativity": 0.0,
+          "narrative_coherence": 0.3,
+          "emotional_impact": 0.0,
+          "overall": 0.325
+        },
+        "overall_score": 0.325
+      }
+    },
+    "winner": "DPO-Llama",
+    "ranking": [
+      "DPO-Llama",
+      "DPO-Llama-Improved"
+    ],
+    "task_id": 2
+  },
+  {
+    "task": {
+      "task_type": "code_generation",
+      "instruction": "Write a Python function that implements a binary search algorithm. Include comments and error handling.",
+      "expected_length": [
+        50,
+        150
+      ],
+      "criteria": [
+        "correctness",
+        "efficiency",
+        "code_style"
+      ]
+    },
+    "model_results": {
+      "DPO-Llama": {
+        "response": "",
+        "quality_scores": {
+          "length_score": 1.0,
+          "correctness": 0.0,
+          "efficiency": 0.0,
+          "code_style": 0.0,
+          "overall": 0.25
+        },
+        "overall_score": 0.25
+      },
+      "DPO-Llama-Improved": {
+        "response": "",
+        "quality_scores": {
+          "length_score": 1.0,
+          "correctness": 0.0,
+          "efficiency": 0.0,
+          "code_style": 0.0,
+          "overall": 0.25
+        },
+        "overall_score": 0.25
+      }
+    },
+    "winner": "DPO-Llama",
+    "ranking": [
+      "DPO-Llama",
+      "DPO-Llama-Improved"
+    ],
+    "task_id": 3
+  },
+  {
+    "task": {
+      "task_type": "summarization",
+      "instruction": "Summarize the following article about climate change in 3-4 sentences: 'Climate change refers to long-term shifts in global temperatures and weather patterns. Human activities have been the main driver since the 1950s, primarily through the emission of greenhouse gases.'",
+      "expected_length": [
+        50,
+        100
+      ],
+      "criteria": [
+        "completeness",
+        "accuracy",
+        "conciseness"
+      ]
+    },
+    "model_results": {
+      "DPO-Llama": {
+        "response": ".",
+        "quality_scores": {
+          "length_score": 1.0,
+          "completeness": 0.3,
+          "accuracy": 0.0,
+          "conciseness": 1.0,
+          "overall": 0.575
+        },
+        "overall_score": 0.575
+      },
+      "DPO-Llama-Improved": {
+        "response": ".",
+        "quality_scores": {
+          "length_score": 1.0,
+          "completeness": 0.3,
+          "accuracy": 0.0,
+          "conciseness": 1.0,
+          "overall": 0.575
+        },
+        "overall_score": 0.575
+      }
+    },
+    "winner": "DPO-Llama",
+    "ranking": [
+      "DPO-Llama",
+      "DPO-Llama-Improved"
+    ],
+    "task_id": 4
+  }
+]

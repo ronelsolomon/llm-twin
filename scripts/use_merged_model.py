@@ -26,14 +26,24 @@ def generate_response(model, tokenizer, prompt: str, max_new_tokens: int = 256):
     """Generate response from the model"""
     
     # Format prompt with Alpaca template
-    alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+    alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel.'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 {}
 ### Response:
-"""
+{}"""
     
-    formatted_prompt = alpaca_template.format(prompt)
+    formatted_prompt = alpaca_template.format(prompt, "")
     
     # Tokenize
     inputs = tokenizer(formatted_prompt, return_tensors="pt").to(model.device)

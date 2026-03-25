@@ -1,0 +1,95 @@
+[
+  {
+    "query": "How to implement machine learning algorithms in Python",
+    "expected_document_types": [
+      "article",
+      "repository"
+    ],
+    "expected_topics": [
+      "machine learning",
+      "python",
+      "programming"
+    ],
+    "ground_truth_relevance": [
+      1,
+      0.8,
+      0.6,
+      0.4,
+      0.2
+    ]
+  },
+  {
+    "query": "Benefits of renewable energy systems",
+    "expected_document_types": [
+      "article"
+    ],
+    "expected_topics": [
+      "renewable energy",
+      "sustainability",
+      "environment"
+    ],
+    "ground_truth_relevance": [
+      1,
+      0.9,
+      0.7,
+      0.5,
+      0.3
+    ]
+  },
+  {
+    "query": "Code optimization techniques for better performance",
+    "expected_document_types": [
+      "repository",
+      "article"
+    ],
+    "expected_topics": [
+      "optimization",
+      "performance",
+      "programming"
+    ],
+    "ground_truth_relevance": [
+      1,
+      0.8,
+      0.6,
+      0.4,
+      0.2
+    ]
+  },
+  {
+    "query": "Latest developments in artificial intelligence research",
+    "expected_document_types": [
+      "article"
+    ],
+    "expected_topics": [
+      "AI",
+      "research",
+      "technology"
+    ],
+    "ground_truth_relevance": [
+      1,
+      0.9,
+      0.8,
+      0.6,
+      0.4
+    ]
+  },
+  {
+    "query": "Best practices for software development documentation",
+    "expected_document_types": [
+      "article",
+      "repository"
+    ],
+    "expected_topics": [
+      "documentation",
+      "software development",
+      "best practices"
+    ],
+    "ground_truth_relevance": [
+      1,
+      0.8,
+      0.7,
+      0.5,
+      0.3
+    ]
+  }
+]

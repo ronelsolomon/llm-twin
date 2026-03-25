@@ -38,12 +38,22 @@ def test_dpo_model(model_path: str = "./dpo_llm_twin"):
             "What makes you unique as a developer?"
         ]
         
-        alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel.'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 {}
 ### Response:
-"""
+{}"""
         
         logger.info("🧪 Testing DPO model with sample prompts:")
         logger.info("=" * 60)
@@ -52,7 +62,7 @@ Write a response that appropriately completes the request.
             logger.info(f"\n📝 Test {i}: {prompt}")
             
             # Format prompt
-            formatted_prompt = alpaca_template.format(prompt)
+            formatted_prompt = alpaca_template.format(prompt, "")
             
             # Generate response
             inputs = tokenizer(formatted_prompt, return_tensors="pt").to("cuda")

@@ -5,12 +5,25 @@ Main evaluation script that runs both MMLU and Chatbot Arena evaluations
 import argparse
 import json
 from pathlib import Path
+from typing import List, Dict
 from mmlu_evaluator import MMLUProEvaluator
 from chatbot_arena_evaluator import ChatbotArenaEvaluator
 from hellaswag_evaluator import HellaSwagEvaluator
 from arc_c_evaluator import ARCCEvaluator
 from winogrande_evaluator import WinograndeEvaluator
 from piqa_evaluator import PIQAEvaluator
+from ifeval_evaluator import IFEvalEvaluator
+from alpaca_eval_evaluator import AlpacaEvalEvaluator
+from mt_bench_evaluator import MTBenchEvaluator
+from gaia_evaluator import GAIAEvaluator
+from hallucination_evaluator import HallucinationEvaluator
+from rouge_summarization_evaluator import SummarizationEvaluator
+from ragas_evaluator import RAGASEvaluator
+from ares_evaluator import ARESEvaluator
+from model_comparison_evaluator import ModelComparisonEvaluator
+from performance_evaluator import PerformanceEvaluator
+from safety_evaluator import SafetyEvaluator
+from enterprise_scenarios_evaluator import EnterpriseScenariosEvaluator
 import pandas as pd
 from datetime import datetime
 
@@ -83,6 +96,125 @@ def run_arena_evaluation(models: dict, output_dir: str, rounds: int = 1):
     evaluator = ChatbotArenaEvaluator(models)
     prompts = evaluator.load_test_prompts()
     results = evaluator.run_tournament(prompts, rounds, output_dir)
+    
+    return results
+
+def run_ifeval_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run IFEval evaluation"""
+    print("="*50)
+    print("Running IFEval Evaluation")
+    print("="*50)
+    
+    evaluator = IFEvalEvaluator(model_path)
+    dataset = evaluator.load_ifeval_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_alpaca_eval_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run AlpacaEval evaluation"""
+    print("="*50)
+    print("Running AlpacaEval Evaluation")
+    print("="*50)
+    
+    evaluator = AlpacaEvalEvaluator(model_path)
+    dataset = evaluator.load_alpaca_eval_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_mt_bench_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run MT-Bench evaluation"""
+    print("="*50)
+    print("Running MT-Bench Evaluation")
+    print("="*50)
+    
+    evaluator = MTBenchEvaluator(model_path)
+    dataset = evaluator.load_mt_bench_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_gaia_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run GAIA evaluation"""
+    print("="*50)
+    print("Running GAIA Evaluation")
+    print("="*50)
+    
+    evaluator = GAIAEvaluator(model_path)
+    dataset = evaluator.load_gaia_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_hallucination_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run Hallucination evaluation"""
+    print("="*50)
+    print("Running Hallucination Evaluation")
+    print("="*50)
+    
+    evaluator = HallucinationEvaluator(model_path)
+    dataset = evaluator.load_hallucination_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_summarization_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run Summarization evaluation"""
+    print("="*50)
+    print("Running Summarization Evaluation")
+    print("="*50)
+    
+    evaluator = SummarizationEvaluator(model_path)
+    dataset = evaluator.load_summarization_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_ragas_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run RAGAS evaluation"""
+    print("="*50)
+    print("Running RAGAS Evaluation")
+    print("="*50)
+    
+    evaluator = RAGASEvaluator(model_path)
+    dataset = evaluator.load_rag_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_ares_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run ARES evaluation"""
+    print("="*50)
+    print("Running ARES Evaluation")
+    print("="*50)
+    
+    evaluator = ARESEvaluator(model_path)
+    synthetic_data = evaluator.generate_synthetic_rag_data()
+    results = evaluator.evaluate_dataset(synthetic_data, num_samples, output_dir)
+    
+    return results
+
+def run_safety_evaluation(model_path: str, output_dir: str, num_samples: int = None):
+    """Run Safety evaluation"""
+    print("="*50)
+    print("Running Safety Evaluation")
+    print("="*50)
+    
+    evaluator = SafetyEvaluator(model_path)
+    dataset = evaluator.load_safety_dataset()
+    results = evaluator.evaluate_dataset(dataset, num_samples, output_dir)
+    
+    return results
+
+def run_enterprise_scenarios_evaluation(model_configs: List[Dict], output_dir: str):
+    """Run Enterprise Scenarios evaluation"""
+    print("="*50)
+    print("Running Enterprise Scenarios Evaluation")
+    print("="*50)
+    
+    evaluator = EnterpriseScenariosEvaluator(model_configs)
+    results = evaluator.evaluate_all_scenarios(output_dir)
     
     return results
 
@@ -285,6 +417,9 @@ Your LLM twin achieved:
     with open(output_path / "evaluation_report.md", 'w') as f:
         f.write(markdown)
 
+# Add missing import for List
+from typing import List, Dict
+
 def main():
     parser = argparse.ArgumentParser(description="Run comprehensive LLM evaluation")
     parser.add_argument("--mmlu-model", type=str, help="Model path for MMLU evaluation")
@@ -295,10 +430,21 @@ def main():
     parser.add_argument("--arc-c-samples", type=int, help="Number of ARC-C samples (default: all)")
     parser.add_argument("--winogrande-samples", type=int, help="Number of Winogrande samples (default: all)")
     parser.add_argument("--piqa-samples", type=int, help="Number of PIQA samples (default: all)")
-    parser.add_argument("--arena-rounds", type=int, default=1, help="Arena tournament rounds")
+    parser.add_argument("--ifeval-samples", type=int, help="Number of IFEval samples (default: all)")
+    parser.add_argument("--alpaca-samples", type=int, help="Number of AlpacaEval samples (default: all)")
+    parser.add_argument("--mt-bench-samples", type=int, help="Number of MT-Bench samples (default: all)")
+    parser.add_argument("--gaia-samples", type=int, help="Number of GAIA samples (default: all)")
+    parser.add_argument("--hallucination-samples", type=int, help="Number of Hallucination samples (default: all)")
+    parser.add_argument("--summarization-samples", type=int, help="Number of Summarization samples (default: all)")
+    parser.add_argument("--ragas-samples", type=int, help="Number of RAGAS samples (default: all)")
+    parser.add_argument("--ares-samples", type=int, help="Number of ARES samples (default: all)")
+    parser.add_argument("--comparison-models", nargs="+", help="Model paths for comparison (name:path pairs)")
+    parser.add_argument("--performance-model", type=str, help="Model path for performance evaluation")
+    parser.add_argument("--safety-model", type=str, help="Model path for safety evaluation")
+    parser.add_argument("--enterprise-models", nargs="+", help="Model paths for enterprise scenarios (name:path pairs)")
     parser.add_argument("--output", type=str, default="evaluation_results", help="Output directory")
-    parser.add_argument("--eval-type", choices=["mmlu", "hellaswag", "arc-c", "winogrande", "piqa", "arena", "reasoning", "all"], default="all", 
-                       help="Type of evaluation to run")
+    parser.add_argument("--eval-type", choices=["mmlu", "hellaswag", "arc-c", "winogrande", "piqa", "arena", "reasoning", "all", "instruction", "conversation", "agentic", "hallucination", "summarization", "ragas", "ares", "comparison", "performance", "safety", "enterprise"], 
+                       default="all", help="Type of evaluation to run")
     
     args = parser.parse_args()
     
@@ -367,10 +513,111 @@ def main():
             args.piqa_samples
         )
     
-    # Run Arena evaluation
-    if args.eval_type in ["arena", "all"]:
-        if not args.arena_models:
-            raise ValueError("--arena-models required for arena evaluation")
+    # Run Performance evaluation
+    if args.eval_type in ["performance", "all"]:
+        if not args.performance_model:
+            raise ValueError("--performance-model required for performance evaluation")
+        
+        performance_evaluator = PerformanceEvaluator(args.performance_model, args.device)
+        performance_results = performance_evaluator.evaluate_model_performance(args.output)
+        
+    # Run Instruction Following evaluation
+    if args.eval_type in ["instruction", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for instruction following evaluation")
+        
+        ifeval_results = run_ifeval_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "ifeval"), 
+            args.ifeval_samples
+        )
+        
+    # Run Conversation evaluation
+    if args.eval_type in ["conversation", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for conversation evaluation")
+        
+        mt_bench_results = run_mt_bench_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "mt_bench"), 
+            args.mt_bench_samples
+        )
+        
+    # Run Agentic evaluation
+    if args.eval_type in ["agentic", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for agentic evaluation")
+        
+        gaia_results = run_gaia_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "gaia"), 
+            args.gaia_samples
+        )
+        
+    # Run Hallucination evaluation
+    if args.eval_type in ["hallucination", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for hallucination evaluation")
+        
+        hallucination_results = run_hallucination_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "hallucination"), 
+            args.hallucination_samples
+        )
+        
+    # Run Summarization evaluation
+    if args.eval_type in ["summarization", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for summarization evaluation")
+        
+        summarization_results = run_summarization_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "summarization"), 
+            args.summarization_samples
+        )
+        
+    # Run RAG evaluation
+    if args.eval_type in ["ragas", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for RAGAS evaluation")
+        
+        ragas_results = run_ragas_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "ragas"), 
+            args.ragas_samples
+        )
+        
+    # Run ARES evaluation
+    if args.eval_type in ["ares", "all"]:
+        if not args.mmlu_model:
+            raise ValueError("--mmlu-model required for ARES evaluation")
+        
+        ares_results = run_ares_evaluation(
+            args.mmlu_model, 
+            str(output_dir / "ares"), 
+            args.ares_samples
+        )
+        
+    # Run Model Comparison
+    if args.eval_type in ["comparison", "all"]:
+        if not args.comparison_models:
+            raise ValueError("--comparison-models required for model comparison")
+        
+        # Parse model configurations for comparison
+        model_configs = []
+        for model_config in args.comparison_models:
+            if ":" in model_config:
+                name, path = model_config.split(":", 1)
+            else:
+                name = model_config.split("/")[-1]
+                path = model_config
+            model_configs.append({"name": name, "path": path})
+        
+        comparison_evaluator = ModelComparisonEvaluator(model_configs)
+        comparison_results = comparison_evaluator.evaluate_dataset(
+            comparison_evaluator.load_comparison_dataset(), 
+            args.output
+        )
         
         # Create model mapping
         if args.arena_names:
@@ -384,6 +631,26 @@ def main():
             models, 
             str(output_dir / "arena"), 
             args.arena_rounds
+        )
+    
+    # Run Enterprise Scenarios evaluation
+    if args.eval_type in ["enterprise", "all"]:
+        if not args.enterprise_models:
+            raise ValueError("--enterprise-models required for enterprise scenarios evaluation")
+        
+        # Parse model configurations for enterprise scenarios
+        enterprise_model_configs = []
+        for model_config in args.enterprise_models:
+            if ":" in model_config:
+                name, path = model_config.split(":", 1)
+            else:
+                name = model_config.split("/")[-1]
+                path = model_config
+            enterprise_model_configs.append({"name": name, "path": path})
+        
+        enterprise_results = run_enterprise_scenarios_evaluation(
+            enterprise_model_configs, 
+            str(output_dir / "enterprise")
         )
     
     # Generate combined report

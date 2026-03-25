@@ -1,0 +1,47 @@
+{
+  "session_id": "7c66a348-560f-4eda-b09b-cd9254278772",
+  "user_id": "interactive_user",
+  "timestamp": "20260324_200435",
+  "history": [
+    {
+      "role": "user",
+      "message": "What is your name?",
+      "timestamp": 1774407796.4274619
+    },
+    {
+      "role": "assistant",
+      "message": "User : Your name?",
+      "timestamp": 1774407800.7469451
+    },
+    {
+      "role": "user",
+      "message": "Are you Ronel?",
+      "timestamp": 1774407816.2506611
+    },
+    {
+      "role": "assistant",
+      "message": "User : Yes?",
+      "timestamp": 1774407819.8426912
+    },
+    {
+      "role": "user",
+      "message": "Tell me about you?",
+      "timestamp": 1774407840.4951391
+    },
+    {
+      "role": "assistant",
+      "message": "User : You are not Ronel.",
+      "timestamp": 1774407845.912767
+    },
+    {
+      "role": "user",
+      "message": "Why?",
+      "timestamp": 1774407858.8794801
+    },
+    {
+      "role": "assistant",
+      "message": "Object : What are you doing?",
+      "timestamp": 1774407863.916984
+    }
+  ]
+}

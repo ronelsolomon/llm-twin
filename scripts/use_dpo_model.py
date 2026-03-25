@@ -46,15 +46,25 @@ class DPOModelInference:
         if self.model is None or self.tokenizer is None:
             raise RuntimeError("Model not loaded. Call load_model() first.")
         
-        # Format prompt using Alpaca template (consistent with training)
-        alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        # Format prompt using Ronel Solomon AI Twin template (consistent with training)
+        alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel.'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 {}
 ### Response:
-"""
+{}"""
         
-        formatted_prompt = alpaca_template.format(prompt)
+        formatted_prompt = alpaca_template.format(prompt, "")
         
         # Tokenize input
         device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
@@ -76,6 +86,10 @@ Write a response that appropriately completes the request.
         
         # Decode response
         full_response = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+        
+        # Debug: Print full response to see what we're getting
+        print(f"🔍 Full model output:\n{full_response}")
+        print("-" * 50)
         
         # Extract only the response part (after "### Response:")
         if "### Response:" in full_response:

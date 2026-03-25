@@ -184,7 +184,7 @@ class UnslothFineTuningPipeline:
     
     def format_training_data(self, instruction_dataset: Dataset) -> Dataset:
         """
-        Format training data for the model using the Alpaca template.
+        Format training data for the model using the Ronel Solomon AI Twin template.
         
         Args:
             instruction_dataset: Dataset with instruction-output pairs
@@ -192,11 +192,21 @@ class UnslothFineTuningPipeline:
         Returns:
             Formatted dataset ready for training
         """
-        logger.info("📝 Formatting training data with Alpaca template...")
+        logger.info("📝 Formatting training data with Ronel Solomon AI Twin template...")
         
-        # Alpaca template
-        alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        # Ronel Solomon AI Twin template
+        alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 
 {}
@@ -224,7 +234,7 @@ Write a response that appropriately completes the request.
             remove_columns=instruction_dataset.column_names
         )
         
-        logger.info(f"✅ Formatted {len(formatted_dataset)} training examples with Alpaca template")
+        logger.info(f"✅ Formatted {len(formatted_dataset)} training examples with Ronel Solomon AI Twin template")
         return formatted_dataset
     
     def prepare_for_training(self, json_file_path: str = None, use_combined_datasets: bool = True) -> tuple:
@@ -370,9 +380,19 @@ Write a response that appropriately completes the request.
         # Enable inference mode
         self.enable_inference()
         
-        # Alpaca prompt template
-        alpaca_prompt = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        # Ronel Solomon AI Twin prompt template
+        alpaca_prompt = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel.'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 
 {}

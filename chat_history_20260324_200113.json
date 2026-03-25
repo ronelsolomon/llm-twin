@@ -1,0 +1,12 @@
+{
+  "session_id": "282c1ee7-8828-4f43-b69a-b0016ea67275",
+  "user_id": "interactive_user",
+  "timestamp": "20260324_200113",
+  "history": [
+    {
+      "role": "user",
+      "message": "What is your name?",
+      "timestamp": 1774407656.7106838
+    }
+  ]
+}

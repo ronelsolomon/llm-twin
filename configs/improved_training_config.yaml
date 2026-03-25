@@ -1,0 +1,54 @@
+# Improved Ronel Solomon AI Twin Training Configuration
+# Addresses issues with poor model quality and training
+
+model:
+  base_model: "unsloth/Meta-Llama-3.1-8B-Instruct"
+  peft:
+    r: 64
+    lora_alpha: 16
+    lora_dropout: 0
+    bias: "none"
+    target_modules:
+      - "q_proj"
+      - "k_proj" 
+      - "v_proj"
+      - "o_proj"
+      - "gate_proj"
+      - "up_proj"
+      - "down_proj"
+    use_gradient_checkpointing: "unsloth"
+    random_state: 3407
+    use_rslora: false
+    loft_q_config: null
+
+training:
+  output_dir: "./improved_ronel_twin"
+  num_train_epochs: 3
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 4
+  warmup_steps: 100
+  max_steps: -1
+  learning_rate: 2e-4
+  fp16: false  # Will be set automatically based on hardware
+  bf16: false  # Will be set automatically based on hardware
+  logging_steps: 10
+  optim: "adamw_8bit"
+  weight_decay: 0.01
+  lr_scheduler_type: "linear"
+  seed: 3407
+  evaluation_strategy: "steps"
+  eval_steps: 50
+  save_steps: 50
+  save_total_limit: 2
+  load_best_model_at_end: true
+  report_to: "none"
+  # Enhanced parameters for better training
+  dataloader_pin_memory: false
+  gradient_checkpointing: true
+  remove_unused_columns: false
+
+data:
+  max_length: 2048
+  num_samples: 1000  # Increased for better training
+  use_existing_data: true
+  data_file: "data/instruction_pairs.json"

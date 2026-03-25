@@ -1,0 +1,398 @@
+{
+  "model_configs": [
+    {
+      "name": "DPO-Llama",
+      "path": "/Users/ronel/Downloads/llm twin/dpo_llm_twin"
+    },
+    {
+      "name": "DPO-Llama-Improved",
+      "path": "/Users/ronel/Downloads/llm twin/dpo_llm_twin_improved"
+    }
+  ],
+  "total_tasks": 7,
+  "overall_model_scores": {
+    "DPO-Llama": 0.32142857142857145,
+    "DPO-Llama-Improved": 0.32142857142857145
+  },
+  "win_rates": {
+    "DPO-Llama": 1.0,
+    "DPO-Llama-Improved": 0.0
+  },
+  "task_type_averages": {
+    "blog_post": 0.25,
+    "technical_explanation": 0.25,
+    "creative_writing": 0.325,
+    "code_generation": 0.25,
+    "summarization": 0.575,
+    "question_answering": 0.35,
+    "instruction_following": 0.25
+  },
+  "task_type_scores": {
+    "blog_post": {
+      "total": 1,
+      "scores": [
+        0.25,
+        0.25
+      ]
+    },
+    "technical_explanation": {
+      "total": 1,
+      "scores": [
+        0.25,
+        0.25
+      ]
+    },
+    "creative_writing": {
+      "total": 1,
+      "scores": [
+        0.325,
+        0.325
+      ]
+    },
+    "code_generation": {
+      "total": 1,
+      "scores": [
+        0.25,
+        0.25
+      ]
+    },
+    "summarization": {
+      "total": 1,
+      "scores": [
+        0.575,
+        0.575
+      ]
+    },
+    "question_answering": {
+      "total": 1,
+      "scores": [
+        0.35,
+        0.35
+      ]
+    },
+    "instruction_following": {
+      "total": 1,
+      "scores": [
+        0.25,
+        0.25
+      ]
+    }
+  },
+  "detailed_results": [
+    {
+      "task": {
+        "task_type": "blog_post",
+        "instruction": "Write a blog post about the benefits of renewable energy for a general audience. Keep it engaging and informative, around 300 words.",
+        "expected_length": [
+          250,
+          350
+        ],
+        "criteria": [
+          "engagement",
+          "informativeness",
+          "clarity"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": "I'm not sure, the title?",
+          "quality_scores": {
+            "length_score": 1.0,
+            "engagement": 0.0,
+            "informativeness": 0.0,
+            "clarity": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        },
+        "DPO-Llama-Improved": {
+          "response": "",
+          "quality_scores": {
+            "length_score": 1.0,
+            "engagement": 0.0,
+            "informativeness": 0.0,
+            "clarity": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 0
+    },
+    {
+      "task": {
+        "task_type": "technical_explanation",
+        "instruction": "Explain how machine learning works to someone with a technical background. Include key concepts and practical examples.",
+        "expected_length": [
+          200,
+          400
+        ],
+        "criteria": [
+          "accuracy",
+          "technical_depth",
+          "clarity"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": "In short, no idea why you would think that is the problem.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "accuracy": 0.0,
+            "technical_depth": 0.0,
+            "clarity": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        },
+        "DPO-Llama-Improved": {
+          "response": "This is the only way you're going to get an answer.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "accuracy": 0.0,
+            "technical_depth": 0.0,
+            "clarity": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 1
+    },
+    {
+      "task": {
+        "task_type": "creative_writing",
+        "instruction": "Write a short story about an AI that becomes self-aware. Focus on character development and emotional depth.",
+        "expected_length": [
+          400,
+          600
+        ],
+        "criteria": [
+          "creativity",
+          "narrative_coherence",
+          "emotional_impact"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": "I'm sure it'll be interesting.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "creativity": 0.0,
+            "narrative_coherence": 0.3,
+            "emotional_impact": 0.0,
+            "overall": 0.325
+          },
+          "overall_score": 0.325
+        },
+        "DPO-Llama-Improved": {
+          "response": "A movie would be a good start.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "creativity": 0.0,
+            "narrative_coherence": 0.3,
+            "emotional_impact": 0.0,
+            "overall": 0.325
+          },
+          "overall_score": 0.325
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 2
+    },
+    {
+      "task": {
+        "task_type": "code_generation",
+        "instruction": "Write a Python function that implements a binary search algorithm. Include comments and error handling.",
+        "expected_length": [
+          50,
+          150
+        ],
+        "criteria": [
+          "correctness",
+          "efficiency",
+          "code_style"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": "",
+          "quality_scores": {
+            "length_score": 1.0,
+            "correctness": 0.0,
+            "efficiency": 0.0,
+            "code_style": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        },
+        "DPO-Llama-Improved": {
+          "response": "",
+          "quality_scores": {
+            "length_score": 1.0,
+            "correctness": 0.0,
+            "efficiency": 0.0,
+            "code_style": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 3
+    },
+    {
+      "task": {
+        "task_type": "summarization",
+        "instruction": "Summarize the following article about climate change in 3-4 sentences: 'Climate change refers to long-term shifts in global temperatures and weather patterns. Human activities have been the main driver since the 1950s, primarily through the emission of greenhouse gases.'",
+        "expected_length": [
+          50,
+          100
+        ],
+        "criteria": [
+          "completeness",
+          "accuracy",
+          "conciseness"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": ".",
+          "quality_scores": {
+            "length_score": 1.0,
+            "completeness": 0.3,
+            "accuracy": 0.0,
+            "conciseness": 1.0,
+            "overall": 0.575
+          },
+          "overall_score": 0.575
+        },
+        "DPO-Llama-Improved": {
+          "response": ".",
+          "quality_scores": {
+            "length_score": 1.0,
+            "completeness": 0.3,
+            "accuracy": 0.0,
+            "conciseness": 1.0,
+            "overall": 0.575
+          },
+          "overall_score": 0.575
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 4
+    },
+    {
+      "task": {
+        "task_type": "question_answering",
+        "instruction": "What are the main differences between supervised and unsupervised machine learning? Provide specific examples.",
+        "expected_length": [
+          150,
+          300
+        ],
+        "criteria": [
+          "accuracy",
+          "completeness",
+          "clarity"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": "what are the differences. That's the difference.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "accuracy": 0.0,
+            "completeness": 0.4,
+            "clarity": 0.0,
+            "overall": 0.35
+          },
+          "overall_score": 0.35
+        },
+        "DPO-Llama-Improved": {
+          "response": "for comparison.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "accuracy": 0.0,
+            "completeness": 0.4,
+            "clarity": 0.0,
+            "overall": 0.35
+          },
+          "overall_score": 0.35
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 5
+    },
+    {
+      "task": {
+        "task_type": "instruction_following",
+        "instruction": "Write exactly 5 sentences about artificial intelligence. Each sentence must start with a different letter: A, B, C, D, E.",
+        "expected_length": [
+          100,
+          150
+        ],
+        "criteria": [
+          "constraint_compliance",
+          "creativity",
+          "coherence"
+        ]
+      },
+      "model_results": {
+        "DPO-Llama": {
+          "response": "E.E.N.N.N.N.N.N.N.",
+          "quality_scores": {
+            "length_score": 1.0,
+            "constraint_compliance": 0.0,
+            "creativity": 0.0,
+            "coherence": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        },
+        "DPO-Llama-Improved": {
+          "response": "G, F",
+          "quality_scores": {
+            "length_score": 1.0,
+            "constraint_compliance": 0.0,
+            "creativity": 0.0,
+            "coherence": 0.0,
+            "overall": 0.25
+          },
+          "overall_score": 0.25
+        }
+      },
+      "winner": "DPO-Llama",
+      "ranking": [
+        "DPO-Llama",
+        "DPO-Llama-Improved"
+      ],
+      "task_id": 6
+    }
+  ]
+}

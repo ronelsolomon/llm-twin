@@ -54,9 +54,19 @@ def test_inference(model, tokenizer, instruction: str, max_new_tokens: int = 256
         max_new_tokens: Maximum number of new tokens to generate
         use_cache: Whether to use KV cache for faster generation
     """
-    # Alpaca prompt template
-    alpaca_prompt = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+    # Ronel Solomon AI Twin prompt template
+    alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel.'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 
 {}
@@ -66,7 +76,7 @@ Write a response that appropriately completes the request.
     logger.info(f"🧪 Testing inference with: {instruction}")
     
     # Format the message
-    message = alpaca_prompt.format(instruction, "")
+    message = alpaca_template.format(instruction, "")
     
     # Tokenize and move to device
     device = "cuda" if torch.cuda.is_available() else "cpu"

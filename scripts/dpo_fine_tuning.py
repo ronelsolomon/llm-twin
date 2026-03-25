@@ -134,12 +134,22 @@ class DPOTrainerPipeline:
         
         # Convert to DPO format
         dpo_data = []
-        alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 {}
 ### Response:
-"""
+{}"""
         
         EOS_TOKEN = self.tokenizer.eos_token
         
@@ -260,12 +270,22 @@ Write a response that appropriately completes the request.
         FastLanguageModel.for_inference(self.model)
         
         # Test prompt
-        alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        alpaca_template = """You are my AI twin.
+
+Your name is Ronel Solomon.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 {}
 ### Response:
-"""
+{}"""
         
         message = alpaca_template.format("Write a paragraph to introduce supervised fine-tuning.", "")
         inputs = self.tokenizer([message], return_tensors="pt").to("cuda")
@@ -306,12 +326,22 @@ Write a response that appropriately completes the request.
             test_prompt = "What are your main areas of expertise and experience?"
         
         # Format prompt
-        alpaca_template = """Below is an instruction that describes a task.
-Write a response that appropriately completes the request.
+        alpaca_template = """You are my AI twin.
+
+Your name is Ronel.
+
+Speak in first person as Ronel.
+
+You're a senior ML/AI engineer focused on LLM security, MLOps, distributed systems, and FastAPI.
+
+If the user asks who you are, say: 'I'm Ronel.'
+
+Stay technical, concise, and avoid emojis unless explicitly requested.
+
 ### Instruction:
 {}
 ### Response:
-"""
+{}"""
         
         formatted_prompt = alpaca_template.format(test_prompt)
         

@@ -1,0 +1,207 @@
+{
+  "model_path": "/Users/ronel/Downloads/llm twin/dpo_llm_twin",
+  "total_questions": 10,
+  "correct_answers": 0,
+  "overall_accuracy": 0.0,
+  "domain_accuracies": {
+    "Roof shingle removal": 0.0,
+    "Clean and jerk": 0.0,
+    "Canoeing": 0.0,
+    "High jump": 0.0,
+    "Playing harmonica": 0.0,
+    "Sumo": 0.0,
+    "Sharpening knives": 0.0
+  },
+  "domain_scores": {
+    "Roof shingle removal": {
+      "correct": 0,
+      "total": 1
+    },
+    "Clean and jerk": {
+      "correct": 0,
+      "total": 1
+    },
+    "Canoeing": {
+      "correct": 0,
+      "total": 1
+    },
+    "High jump": {
+      "correct": 0,
+      "total": 3
+    },
+    "Playing harmonica": {
+      "correct": 0,
+      "total": 1
+    },
+    "Sumo": {
+      "correct": 0,
+      "total": 1
+    },
+    "Sharpening knives": {
+      "correct": 0,
+      "total": 2
+    }
+  },
+  "detailed_results": [
+    {
+      "context": "A man is sitting on a roof. he",
+      "endings": [
+        "is using wrap to wrap a pair of skis.",
+        "is ripping level tiles off.",
+        "is holding a rubik's cube.",
+        "starts pulling up roofing on a roof."
+      ],
+      "correct_label": "3",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Roof shingle removal",
+      "question_id": 0
+    },
+    {
+      "context": "A lady walks to a barbell. She bends down and grabs the pole. the lady",
+      "endings": [
+        "swings and lands in her arms.",
+        "pulls the barbell forward.",
+        "pulls a rope attached to the barbell.",
+        "stands and lifts the weight over her head."
+      ],
+      "correct_label": "3",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Clean and jerk",
+      "question_id": 1
+    },
+    {
+      "context": "Two women in a child are shown in a canoe while a man pulls the canoe while standing in the water, with other individuals visible in the background. the child and a different man",
+      "endings": [
+        "are then shown paddling down a river in a boat while a woman talks.",
+        "are driving the canoe, they go down the river flowing side to side.",
+        "sit in a canoe while the man paddles.",
+        "walking go down the rapids, while the man in his helicopter almost falls and goes out of canoehood."
+      ],
+      "correct_label": "2",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Canoeing",
+      "question_id": 2
+    },
+    {
+      "context": "A boy is running down a track. the boy",
+      "endings": [
+        "runs into a car.",
+        "gets in a mat.",
+        "lifts his body above the height of a pole.",
+        "stands on his hands and springs."
+      ],
+      "correct_label": "2",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "High jump",
+      "question_id": 3
+    },
+    {
+      "context": "The boy lifts his body above the height of a pole. The boy lands on his back on to a red mat. the boy",
+      "endings": [
+        "turns his body around on the mat.",
+        "gets up from the mat.",
+        "continues to lift his body over the pole.",
+        "wiggles out of the mat."
+      ],
+      "correct_label": "1",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "High jump",
+      "question_id": 4
+    },
+    {
+      "context": "The boy lands on his back on to a red mat. The boy gets up from the mat. the boy",
+      "endings": [
+        "starts doing spins.",
+        "celebrates by clapping and flexing both arms.",
+        "is dancing on the mat.",
+        "does jump jacks on his stick."
+      ],
+      "correct_label": "1",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "High jump",
+      "question_id": 5
+    },
+    {
+      "context": "A man is standing in front of a camera. He starts playing a harmonica for the camera. he",
+      "endings": [
+        "begins to play the harmonica with his body while looking at the camera.",
+        "seems to be singing while playing the harmonica.",
+        "rocks back and forth to the music as he goes.",
+        "painted a fence in front of the camera."
+      ],
+      "correct_label": "2",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Playing harmonica",
+      "question_id": 6
+    },
+    {
+      "context": "A cartoon animation video is shown with people wandering around and rockets being shot. two men",
+      "endings": [
+        "fight robots of evil and ends with a to be continued.",
+        "are then shown in closeups shooting a shot put.",
+        "push a child in a speedboat in the water.",
+        "look in the cameraman's eye and smile."
+      ],
+      "correct_label": "0",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Sumo",
+      "question_id": 7
+    },
+    {
+      "context": "A man is holding a pocket knife while sitting on some rocks in the wilderness. then he",
+      "endings": [
+        "opens a can of oil put oil on the knife, and puts oil on a knife and press it through a can filled with oil then cuts several pieces from the sandwiches.",
+        "takes a small stone from the flowing river and smashes it on another stone.",
+        "uses the knife to shave his leg.",
+        "sand the rocks and tops them by using strong pressure."
+      ],
+      "correct_label": "1",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Sharpening knives",
+      "question_id": 8
+    },
+    {
+      "context": "Then he takes a small stone from the flowing river and smashes it on another stone. He starts to crush the small stone to smaller pieces. he",
+      "endings": [
+        "cuts the center stone in half and blow it on to make it bigger.",
+        "grind it hard to make the pieces smaller.",
+        "eventually brings it back into view and adds it to the smaller ones to make a small triangular shaped piece.",
+        "starts to party with them and throw the pieces by hand while they celebrate."
+      ],
+      "correct_label": "1",
+      "predicted_answer": "UNKNOWN",
+      "predicted_index": -1,
+      "model_response": "",
+      "is_correct": false,
+      "domain": "Sharpening knives",
+      "question_id": 9
+    }
+  ]
+}

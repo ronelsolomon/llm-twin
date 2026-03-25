@@ -1,0 +1,203 @@
+{
+  "timestamp": "2026-03-24T16:39:46.293151",
+  "model_ratings": {
+    "DPO Twin": {
+      "rating": 1418.62870415716,
+      "battles": 20,
+      "wins": 5,
+      "losses": 3,
+      "ties": 12,
+      "win_rate": 0.25
+    },
+    "Base Model": {
+      "rating": 1381.37129584284,
+      "battles": 20,
+      "wins": 3,
+      "losses": 5,
+      "ties": 12,
+      "win_rate": 0.15
+    }
+  },
+  "battle_results": [
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:36:05.847545",
+      "prompt": "How do you optimize database queries for performance?",
+      "response_a": "ids, id, and id.",
+      "response_b": "izmail.com"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:36:17.853183",
+      "prompt": "Explain the difference between supervised and unsupervised learning.",
+      "response_a": "idd?",
+      "response_b": "xtremely underwhelmed."
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:36:27.140815",
+      "prompt": "How do neural networks learn from data?",
+      "response_a": "ikea",
+      "response_b": "ight"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:36:36.070399",
+      "prompt": "Explain the concept of machine learning in simple terms.",
+      "response_a": "ikr",
+      "response_b": "ik"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:36:44.617835",
+      "prompt": "What makes code maintainable and readable?",
+      "response_a": "ia",
+      "response_b": "llaust"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "A",
+      "timestamp": "2026-03-24T16:36:56.897605",
+      "prompt": "Explain quantum computing to someone without a physics background.",
+      "response_a": "ich bin ein gute Idee geschehen.",
+      "response_b": "ia"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:37:06.977331",
+      "prompt": "What are the ethical implications of AI in healthcare?",
+      "response_a": "iz nuf",
+      "response_b": "ikr"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:37:15.794929",
+      "prompt": "How would you design a recommendation system?",
+      "response_a": "urn",
+      "response_b": "xtrp.com"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "A",
+      "timestamp": "2026-03-24T16:37:27.208827",
+      "prompt": "What are the key principles of effective communication?",
+      "response_a": "lla I don't know what you are asking.",
+      "response_b": "ersentially."
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "B",
+      "timestamp": "2026-03-24T16:37:36.380670",
+      "prompt": "Write a story about a robot discovering emotions.",
+      "response_a": "icky",
+      "response_b": "iz not a robot."
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:37:51.688529",
+      "prompt": "What makes code maintainable and readable?",
+      "response_a": "icky, too many variables, too many lines, too many comments, too many problems.",
+      "response_b": "ik, but I think I know what you mean."
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "B",
+      "timestamp": "2026-03-24T16:38:18.643747",
+      "prompt": "Write a function that finds the factorial of a number.",
+      "response_a": "iz a factorial",
+      "response_b": "ids, a, b, c, d, e, f, g, h, i, j, k, l, n, p, q, r, s, v, w, x, y, z, x, z"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:38:29.693611",
+      "prompt": "Explain quantum computing to someone without a physics background.",
+      "response_a": "idd",
+      "response_b": "ianhuan"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "A",
+      "timestamp": "2026-03-24T16:38:43.708581",
+      "prompt": "What are the ethical implications of AI in healthcare?",
+      "response_a": "ik, I've heard of it.",
+      "response_b": "ikr"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:38:53.767879",
+      "prompt": "What are the key principles of effective communication?",
+      "response_a": "urs",
+      "response_b": "irc.freenode.net"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:39:03.908004",
+      "prompt": "Explain the difference between supervised and unsupervised learning.",
+      "response_a": "ipsa",
+      "response_b": "xt."
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "A",
+      "timestamp": "2026-03-24T16:39:13.289180",
+      "prompt": "Write a story about a robot discovering emotions.",
+      "response_a": "ich bin ein robot",
+      "response_b": "ids"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "tie",
+      "timestamp": "2026-03-24T16:39:22.163911",
+      "prompt": "How do you optimize database queries for performance?",
+      "response_a": "ids",
+      "response_b": "iai"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "B",
+      "timestamp": "2026-03-24T16:39:33.562842",
+      "prompt": "How would you approach solving a complex optimization problem?",
+      "response_a": "izzat's approach",
+      "response_b": "iz the solution to a problem"
+    },
+    {
+      "model_a": "DPO Twin",
+      "model_b": "Base Model",
+      "winner": "A",
+      "timestamp": "2026-03-24T16:39:46.288358",
+      "prompt": "What are the main differences between Python and JavaScript?",
+      "response_a": "xtrp.js and tp.js",
+      "response_b": "xtr"
+    }
+  ]
+}

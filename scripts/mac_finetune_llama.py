@@ -197,17 +197,16 @@ Stay technical, concise, and avoid emojis unless explicitly requested.
             weight_decay=0.01,
             lr_scheduler_type="cosine",
             seed=3407,
-            eval_strategy="steps",
+            eval_strategy="no",
             eval_steps=100,
             save_steps=100,
             save_total_limit=2,
-            load_best_model_at_end=True,
+            load_best_model_at_end=False,
             report_to="none",
             # Mac-specific optimizations
             dataloader_pin_memory=False,
             gradient_checkpointing=True,
             remove_unused_columns=False,
-            save_safetensors=True,
         )
     
     def train_on_mac(self):
@@ -238,7 +237,6 @@ Stay technical, concise, and avoid emojis unless explicitly requested.
             args=training_args,
             train_dataset=formatted_dataset,
             data_collator=data_collator,
-            tokenizer=tokenizer,
         )
         
         # Start training

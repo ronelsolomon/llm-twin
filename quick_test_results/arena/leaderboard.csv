@@ -1,0 +1,3 @@
+model,elo_rating,battles,wins,losses,ties,win_rate
+DPO Twin,1414.7887194736095,10,2,1,7,0.2
+Base Model,1385.2112805263905,10,1,2,7,0.1

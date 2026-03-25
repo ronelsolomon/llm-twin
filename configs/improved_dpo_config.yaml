@@ -1,0 +1,67 @@
+# Improved DPO Training Configuration
+
+# Model Settings
+model:
+  base_model: "microsoft/DialoGPT-medium"
+  
+  # PEFT Settings
+  peft:
+    r: 32                    # Lower rank for better generalization
+    lora_alpha: 32
+    lora_dropout: 0.1        # Add dropout for regularization
+    target_modules: ["c_attn", "c_proj", "c_fc"]
+    load_in_4bit: true
+
+# DPO Settings
+dpo:
+  beta: 0.1                 # Lower beta for more aggressive updates
+  max_length: 512           # Shorter sequences for better learning
+  max_prompt_length: 256    # Shorter prompts
+  max_target_length: 256    # Shorter responses
+
+# Training Settings  
+training:
+  max_seq_length: 1024      # Shorter sequences
+  per_device_train_batch_size: 1  # Smaller batch for better learning
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 16   # Higher accumulation to maintain effective batch size
+  learning_rate: 5e-6       # Higher learning rate for better adaptation
+  num_train_epochs: 3       # More epochs for better learning
+  warmup_steps: 50          # More warmup steps
+  weight_decay: 0.01
+  optim: "adamw_torch"
+  lr_scheduler_type: "cosine"  # Cosine scheduler for better convergence
+  
+  # Evaluation settings
+  eval_strategy: "steps"
+  eval_steps: 10
+  logging_steps: 1
+  
+  # Hardware settings
+  fp16: true
+  bf16: false
+  
+  # Output settings
+  output_dir: "output_improved"
+  report_to: "none"
+  seed: 42
+
+# Data Settings
+data:
+  preference_dataset_path: "data/improved_preference_dataset.json"
+  train_test_split: 0.2    # 20% for testing with more data
+  
+# Output Settings
+output:
+  model_dir: "./dpo_llm_twin_improved"
+  checkpoints_dir: "./dpo_results_improved"
+  merged_model_dir: "./dpo_llm_twin_improved_merged"
+  
+# Testing Settings
+testing:
+  sample_prompts:
+    - "What are your main areas of expertise and experience?"
+    - "Can you describe your approach to software development?"
+    - "What technologies do you work with most frequently?"
+    - "How do you approach problem-solving in your projects?"
+    - "What makes you unique as a developer?"

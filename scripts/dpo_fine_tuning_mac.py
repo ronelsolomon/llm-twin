@@ -136,6 +136,9 @@ class DPOTrainerPipelineMac:
         self.model = prepare_model_for_kbit_training(self.model)
         self.model = get_peft_model(self.model, peft_config)
         
+        # Add missing attribute for TRL compatibility
+        self.model.warnings_issued = {}
+        
         logger.info("✅ Model and tokenizer loaded successfully")
         
     def load_preference_dataset(self):
@@ -204,7 +207,7 @@ Write a response that appropriately completes the request.
         
         # Use DPOConfig directly
         self.dpo_args = DPOConfig(
-            learning_rate=training_config['learning_rate'],
+            learning_rate=float(training_config['learning_rate']),
             lr_scheduler_type=training_config['lr_scheduler_type'],
             per_device_train_batch_size=training_config['per_device_train_batch_size'],
             per_device_eval_batch_size=training_config['per_device_eval_batch_size'],
@@ -213,14 +216,17 @@ Write a response that appropriately completes the request.
             fp16=training_config['fp16'],
             bf16=training_config['bf16'],
             optim=training_config['optim'],
-            weight_decay=training_config['weight_decay'],
+            weight_decay=float(training_config['weight_decay']),
             warmup_steps=training_config['warmup_steps'],
             output_dir=training_config['output_dir'],
             eval_strategy=training_config['eval_strategy'],
-            eval_steps=training_config['eval_steps'],
-            logging_steps=training_config['logging_steps'],
+            eval_steps=int(training_config['eval_steps']),
+            logging_steps=int(training_config['logging_steps']),
             report_to=training_config['report_to'],
-            seed=training_config['seed'],
+            seed=int(training_config['seed']),
+            beta=float(dpo_config['beta']),
+            max_length=int(dpo_config['max_length']),
+            max_prompt_length=int(dpo_config['max_prompt_length']),
         )
         
         # Store DPO parameters
@@ -242,11 +248,8 @@ Write a response that appropriately completes the request.
             model=self.model,
             ref_model=None,  # Use same model as reference for PEFT
             processing_class=self.tokenizer,
-            beta=self.beta,
             train_dataset=dataset["train"],
             eval_dataset=dataset["test"],
-            max_length=self.max_length,
-            max_prompt_length=self.max_prompt_length,
             args=self.dpo_args,
         )
         
@@ -316,7 +319,8 @@ Write a response that appropriately completes the request.
         formatted_prompt = alpaca_template.format(test_prompt)
         
         # Generate response
-        inputs = tokenizer(formatted_prompt, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
+        device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+        inputs = tokenizer(formatted_prompt, return_tensors="pt").to(device)
         outputs = model.generate(
             **inputs, 
             max_new_tokens=256, 
@@ -361,15 +365,21 @@ Write a response that appropriately completes the request.
             raise
 
 def main():
-    """Main function"""
+    """Main function to run DPO fine-tuning"""
+    import sys
+    
+    # Configure logger
     logger.remove()
     logger.add(lambda msg: print(msg, end=''), level="INFO")
     
     logger.info("🤖 DPO Fine-Tuning Pipeline for Mac")
     logger.info("=" * 50)
     
+    # Get config path from command line or use default
+    config_path = sys.argv[1] if len(sys.argv) > 1 else "configs/dpo_config.yaml"
+    
     # Initialize pipeline
-    pipeline = DPOTrainerPipelineMac()
+    pipeline = DPOTrainerPipelineMac(config_path)
     
     # Run the complete pipeline
     try:

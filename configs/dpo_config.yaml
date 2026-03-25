@@ -33,12 +33,12 @@ training:
   num_train_epochs: 1
   warmup_steps: 10
   weight_decay: 0.01
-  optim: "adamw_8bit"
+  optim: "adamw_torch"
   lr_scheduler_type: "linear"
   
   # Evaluation settings
   eval_strategy: "steps"
-  eval_steps: 0.2
+  eval_steps: 1
   logging_steps: 1
   
   # Hardware settings (will be set dynamically)

@@ -8,8 +8,7 @@ import os
 import json
 import mlx.core as mx
 import mlx.nn as nn
-from mlx_lm import load, generate, fine_tune
-from mlx_lm.utils import generate_step
+from mlx_lm import load, generate
 from datasets import Dataset
 import logging
 from typing import Dict, List, Any
@@ -105,19 +104,6 @@ class RonelTwinMLXFineTuner:
         training_data = self.prepare_training_data(training_texts, tokenizer)
         
         # Fine-tuning configuration
-        config = {
-            "model": model,
-            "tokenizer": tokenizer,
-            "train_data": training_data,
-            "learning_rate": self.learning_rate,
-            "batch_size": self.batch_size,
-            "num_epochs": self.num_epochs,
-            "max_seq_length": self.max_seq_length,
-            "warmup_steps": self.warmup_steps,
-            "output_dir": self.output_dir
-        }
-        
-        # Use MLX LM fine-tuning
         logger.info("Starting fine-tuning with MLX...")
         
         # Custom training loop for MLX
@@ -154,18 +140,19 @@ class RonelTwinMLXFineTuner:
                 targets = batch[:, 1:]    # All but first token
                 
                 # Get model output
-                with mx.stream(mx.default_stream()):
+                def loss_fn(model, inputs, targets):
                     logits = model(inputs)
+                    return nn.losses.cross_entropy(logits, targets)
                 
-                # Calculate loss
-                loss = nn.losses.cross_entropy(logits, targets)
+                # Compute loss and gradients
+                loss, grads = mx.value_and_grad(loss_fn)(model, inputs, targets)
+                
                 epoch_loss += loss.item()
                 num_batches += 1
                 
-                # Backward pass
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.update()
+                # Update model
+                optimizer.update(model, grads)
+                mx.eval(model, optimizer)
                 
                 total_steps += 1
                 
@@ -243,7 +230,7 @@ def main():
     try:
         import mlx
         import mlx_lm
-        logger.info(f"MLX version: {mlx.__version__}")
+        logger.info("MLX and mlx-lm are available")
     except ImportError:
         logger.error("MLX or mlx-lm not installed. Please install with:")
         logger.error("pip install mlx mlx-lm")
